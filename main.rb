@@ -71,9 +71,7 @@ class ADF
       in["-", "q2"]
         estado = "q21"
       in[".", "q21"]
-        estado = "q22"
-      in[".", "q22"]
-        estado = "q23"
+        estado = "q22"  
       in["-", "q21"]
         estado = "q24"    
       in["-", "q24"]
@@ -114,12 +112,16 @@ class ADF
         estado = "q42"
       in[".", "q42"]
         estado = "q43"
+      in["-", "q42"]
+        estado = "q47"    
       in[".", "q8"]
         estado = "q44"
       in[".", "q44"]
         estado = "q45"
       in[".", "q9"]
-        estado = "q46"      
+        estado = "q46"
+      in["-", "q47"]
+        estado = "q23"        
 
       #volta
       in[" ", "q1"]
@@ -423,7 +425,8 @@ class ADF
 end
 
 cadeias = [
-  ".",
+  "--..-- --..--",  
+  "..-.. / ..-..",
   ". .",
   ". . / . . . / .",
   "..",
