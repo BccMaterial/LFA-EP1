@@ -423,25 +423,55 @@ class ADF
     end
   end
 end
+puts "Bem-vindo ao nosso tradutor de código morse!"
+puts "- Digite a letra desejada usando . e -"
+puts "- Separe as letras por \" \""
+puts "- Separe as palavras por /"
+puts "Comandos:"
+puts "- T - Testar cadeias já prontas"
+puts "- 0 - Sair"
+is_first = false
+loop do
+  if is_first
+    print "Insira seu código morse ou seu comando (Para sair, digite 0): "
+  else 
+    print "Insira seu código morse ou seu comando: "
+  end
+  input_usuario = gets.chomp
 
-cadeias = [
-  "--..-- --..--",  
-  "..-.. / ..-..",
-  ". .",
-  ". . / . . . / .",
-  "..",
-  "----. .... ----.",
-  "... --- -.-. --- .-. .-. .- -- / -- . / ... ..- -... .. / -. --- / --- -. .. -... ..- ... / . -- / -- .- .-. .-. --- -.-. --- ...",
-  ".- -... -.-. -.. . ..-. --. .... .. .--- -.- .-.. -- -. --- .--. --.- .-. ... - ..- ...- .-- -..- -.-- --.. ----- .---- ..--- ...-- ....- ..... -.... --... ---.. ----.",
-  "--- / - .... .. .- --. --- / .- -.. --- .-. .- / .--. . -..- .",
-  "--- / -.-. .- .. --- / .- -.. --- .-. .- / .- .-.. --. ..- -- .- / -.-. --- .. ... .-"
-]
+  if input_usuario === "0"
+    puts "Saindo..."
+    exit 0
+  end
 
-puts "Resultados:"
-puts "----------------------------"
-cadeias.each do |cadeia|
-  adf = ADF.new(cadeia)
-  resultado = adf.iniciar
-  puts "#{cadeia} #{resultado}"
+  if input_usuario.upcase === "T"
+    cadeias = [
+      ".",
+      ". .",
+      ". . / . . . / .",
+      "..",
+      "----. .... ----.",
+      "... --- -.-. --- .-. .-. .- -- / -- . / ... ..- -... .. / -. --- / --- -. .. -... ..- ... / . -- / -- .- .-. .-. --- -.-. --- ...",
+      ".- -... -.-. -.. . ..-. --. .... .. .--- -.- .-.. -- -. --- .--. --.- .-. ... - ..- ...- .-- -..- -.-- --.. ----- .---- ..--- ...-- ....- ..... -.... --... ---.. ----.",
+      "--- / - .... .. .- --. --- / .- -.. --- .-. .- / .--. . -..- .",
+      "--- / -.-. .- .. --- / .- -.. --- .-. .- / .- .-.. --. ..- -- .- / -.-. --- .. ... .-"
+    ]
+    
+    puts "Resultados:"
+    puts "----------------------------"
+    cadeias.each do |cadeia|
+      adf = ADF.new(cadeia)
+      resultado = adf.iniciar
+      puts "#{cadeia} #{resultado}"
+    end
+    puts "----------------------------"
+  else
+    puts "Resultado:"
+    puts "----------------------------"
+    adf = ADF.new(input_usuario)
+    resultado = adf.iniciar
+    puts "#{input_usuario} #{resultado}"
+    puts "----------------------------"
+  end
+  is_first = true
 end
-puts "----------------------------"
